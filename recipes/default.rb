@@ -11,7 +11,7 @@ include_recipe 'build-essential'
 version = node['freetds']['version']
 freetds_url = node['freetds']['url'] ||
   "http://mirrors.ibiblio.org/freetds/stable/freetds-#{version}.tar.gz"
-configure_options = "--with-tdsver=#{node['freetds']['tds_version']} #{'--disable-odbc' unless node['freetds']['odbc']}"
+configure_options = "--with-tdsver=#{node['freetds']['tds_version']} --prefix=#{node['freetds']['prefix']} #{'--disable-odbc' unless node['freetds']['odbc']}"
 
 remote_file "#{Chef::Config[:file_cache_path]}/freetds-#{version}.tar.gz" do
   action :create_if_missing
