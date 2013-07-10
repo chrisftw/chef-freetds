@@ -30,7 +30,7 @@ bash "build freetds" do
   not_if 'which tsql'
 end
 
-template "/usr/local/etc/freetds.conf" do
+template "#{node['freetds']['prefix']}/etc/freetds.conf" do
   source "freetds.conf.erb"
   owner 'root'
   group 'root'
